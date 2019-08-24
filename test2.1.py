@@ -37,3 +37,10 @@ a = [0, 1, 1, 0, 0]
 b = [1, 1, 0, 1, 0]
 c = addBinary(a,b)
 print c
+"""
+    
+"""
+a = [31,41,59,26,41,58]
+for i in range(len(a)):
+    for j in range(i,len(a)):
+        if 
