@@ -23,6 +23,7 @@ for i in range(1,len(a)):
     a[j+1] = key
 print a
 
+#2.1-4二进制加法
 def addBinary(a,b):
     c = [0] * (len(a) + 1)
     up = 0
