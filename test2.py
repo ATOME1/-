@@ -1,11 +1,10 @@
 #coding=utf-8
 import random
 import datetime
+import math
 """
-    插入排序
+    插入排序    时间复杂度：n^2
 """
-a = [31,41,59,26,41,58]
-print a[5]
 def insertSort(a):
     for i in range(1,len(a)):
         key = a[i]
@@ -40,9 +39,8 @@ b = [1, 1, 0, 1, 0]
 c = addBinary(a,b)
 print c
 """
-    选择排序
+    选择排序    时间复杂度：n^2
 """
-a = [31,41,59,26,41,58]
 def chooseSort(a):
     for i in range(len(a)):
         k = i
@@ -53,9 +51,9 @@ def chooseSort(a):
         a[k] = a[i]
         a[i] = key
 
-print "----------------------------------"
+
 """
-    归并排序，不使用哨兵元素
+    归并排序，不使用哨兵元素    时间复杂度：nlg(n)
 """
 def merge(a,p,q,r):
     n1 = q - p + 1
@@ -82,7 +80,6 @@ def merge(a,p,q,r):
             a[k] = R[j]
             j+=1
 
-
 def mergeSort(a,p,r):
     q = 0
     if p >= r:
@@ -92,18 +89,48 @@ def mergeSort(a,p,r):
     mergeSort(a,q+1,r)
     merge(a,p,q,r)
 
-a =[0]*10000
-for i in range(10000):
+
+"""
+    归并排序中对小数组采用插入排序     时间复杂度：nk+nlg(n/k)
+    k = lg(n)   效率最优
+"""
+
+def mergeInsertSort(a,p,r,k):
+    if r-p+1 > k:
+        q = (p + r) / 2
+        mergeInsertSort(a, p, q, k)
+        mergeInsertSort(a, q + 1, r, k)
+        merge(a, p, q, r)
+    else:
+        insert_merge(a,p,r)
+
+def insert_merge(a,p,r):
+    for i in range(p,r+1):
+        key = a[i]
+        j = i-1
+        while j>=p and a[j]>key:
+            a[j+1] = a[j]
+            j = j - 1
+        a[j+1] = key
+
+
+
+print "----------------------------------"
+a =[0]*20000
+for i in range(20000):
     a[i] = random.randint(0,100000)
 b = a[:]
 c = a[:]
-print id(a),id(b),id(c)
+d = a[:]
+print id(a),id(b),id(c),id(d)
+
 
 b1 = datetime.datetime.now()
 mergeSort(a,0,len(a)-1)
 e1 = datetime.datetime.now()
 print e1 - b1
 print a
+"""
 b2 = datetime.datetime.now()
 chooseSort(b)
 e2 = datetime.datetime.now()
@@ -114,3 +141,10 @@ insertSort(c)
 e3 = datetime.datetime.now()
 print e3 - b3
 print c
+"""
+k = math.log(len(d),2)
+b4 = datetime.datetime.now()
+mergeInsertSort(d,0,len(d)-1,k)
+e4 = datetime.datetime.now()
+print e4 - b4
+print d
