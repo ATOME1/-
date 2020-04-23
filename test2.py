@@ -4,7 +4,9 @@ import datetime
 import math
 """
     插入排序    时间复杂度：n^2
+    ceshi
 """
+
 def insertSort(a):
     for i in range(1,len(a)):
         key = a[i]
