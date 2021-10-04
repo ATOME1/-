@@ -24,7 +24,7 @@ for i in range(1,len(a)):
         a[j+1] = a[j]
         j = j -1
     a[j+1] = key
-print a
+print(a)
 
 #2.1-4二进制加法
 def addBinary(a,b):
@@ -39,7 +39,7 @@ def addBinary(a,b):
 a = [0, 1, 1, 0, 0]
 b = [1, 1, 0, 1, 0]
 c = addBinary(a,b)
-print c
+print(c)
 """
     选择排序    时间复杂度：n^2
 """
@@ -117,21 +117,21 @@ def insert_merge(a,p,r):
 
 
 
-print "----------------------------------"
+print("----------------------------------")
 a =[0]*20000
 for i in range(20000):
     a[i] = random.randint(0,100000)
 b = a[:]
 c = a[:]
 d = a[:]
-print id(a),id(b),id(c),id(d)
+print(id(a),id(b),id(c),id(d))
 
 
 b1 = datetime.datetime.now()
 mergeSort(a,0,len(a)-1)
 e1 = datetime.datetime.now()
-print e1 - b1
-print a
+print(e1 - b1)
+print(a)
 """
 b2 = datetime.datetime.now()
 chooseSort(b)
@@ -148,5 +148,5 @@ k = math.log(len(d),2)
 b4 = datetime.datetime.now()
 mergeInsertSort(d,0,len(d)-1,k)
 e4 = datetime.datetime.now()
-print e4 - b4
-print d
+print(e4 - b4)
+print(d)
