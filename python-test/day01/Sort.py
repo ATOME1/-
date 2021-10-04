@@ -2,32 +2,18 @@
 import copy
 import random
 
-"""
-冒泡排序
-时间复杂度：O(n2)
-"""
 
-
+# 冒泡排序    时间复杂度：O(n2)
 def bubbleSort(arr):
     pass
 
 
-"""
-选择排序
-时间复杂度：O(n2)
-"""
-
-
+# 选择排序    时间复杂度：O(n2)
 def selectSort(arr):
     pass
 
 
-"""
-插入排序
-时间复杂度：最优O(n) 最差O(n2)   不稳定
-"""
-
-
+# 插入排序    时间复杂度：最优O(n) 最差O(n2)   不稳定
 def insertSort(arr):
     if len(arr) < 2 or arr is None:
         return
@@ -40,10 +26,34 @@ def insertSort(arr):
     return arr
 
 
-arr = [random.randint(0, 20) for i in range(10)]
-print("原数组  ：" + str(arr))
+# 生成一组随机数组
+def generateRandomArray(maxSize, maxValue):
+    return [random.randint(0, maxValue) for i in range(maxSize)]
 
-arr1 = copy.deepcopy(arr)
-print("插入排序：" + str(insertSort(arr1)))
 
-print(list(range(10)))
+# 默认排序方式
+def comparator(arr):
+    arr.sort()
+
+
+# 使用对数器的方式检测排序是否ok
+if __name__ == '__main__':
+    testTimes = 1000
+    maxSize = 100
+    maxValue = 100
+    succeed = True
+    for i in range(testTimes):
+        arr1 = generateRandomArray(maxSize, maxValue)
+        arr2 = copy.deepcopy(arr1)
+        insertSort(arr1)
+        comparator(arr2)
+        if (arr1 != arr2):
+            succeed = False
+            print(arr1)
+            print(arr2)
+            break
+    print("Nice" if succeed else "Error")
+    a1 = generateRandomArray(maxSize, maxValue)
+    print(a1)
+    insertSort(a1)
+    print(a1)
