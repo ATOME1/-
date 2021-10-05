@@ -1,4 +1,4 @@
-from day02.mergeSort import *
+from day02.MergeSort import *
 
 
 
