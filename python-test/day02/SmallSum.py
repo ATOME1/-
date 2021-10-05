@@ -80,11 +80,11 @@ def merge1(arr, L, mid, R):
             temp[i] = arr[p1]
             i += 1
             p1 += 1
-    while p1 < mid:
+    while p1 <= mid:
         temp[i] = arr[p1]
         i += 1
         p1 += 1
-    while p2 < R:
+    while p2 <= R:
         temp[i] = arr[p2]
         i += 1
         p2 += 1
@@ -93,5 +93,5 @@ def merge1(arr, L, mid, R):
         arr[L + j] = temp[j]
 
 
-arr1 = [10,1, 3, 4, 2, 5]
+arr1 = [1, 3, 4, 2, 5]
 mergeSort1(arr1,0,len(arr1)-1)
