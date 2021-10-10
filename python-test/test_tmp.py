@@ -1,4 +1,5 @@
 from day02.MergeSort import *
+from day02.QuickSort import *
 
 
 
@@ -14,14 +15,15 @@ def comparator(arr):
 
 # 使用对数器的方式检测排序是否ok
 if __name__ == '__main__':
-    testTimes = 1000
+    testTimes = 10000
     maxSize = 100
     maxValue = 100
     succeed = True
     for i in range(testTimes):
         arr1 = generateRandomArray(maxSize, maxValue)
         arr2 = copy.deepcopy(arr1)
-        mergeSort(arr1,0,len(arr1)-1)
+        # mergeSort(arr1,0,len(arr1)-1)
+        quickSort(arr1,0,len(arr1)-1)
         comparator(arr2)
         if (arr1 != arr2):
             succeed = False
